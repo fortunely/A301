@@ -1,11 +1,11 @@
 cmd_id = "0xF2"
 byte1 = "0x00"
-byte2 = "0x01"
+byte2 = "0x02"
 byte3 = "0x80"
 slave_addr = "0x34"
 
 def get_i2c_data():
-    file = open("i2c_log.txt")
+    file = open("./tp/i2c_log_checksum.txt")
     i2c_data_128byte = []
 
     line_text = file.readline().strip()
@@ -15,15 +15,15 @@ def get_i2c_data():
             print(line_text)
 
             for t in datas:
-                i2c_data_128byte.append(int(t, 16))
+                if t:
+                    i2c_data_128byte.append(int(t, 16))
 
         line_text = file.readline().strip()
 
-    i2c_data_128byte.insert(0, int(byte3, 16))
-    i2c_data_128byte.insert(0, int(byte2, 16))
-    i2c_data_128byte.insert(0, int(byte1, 16))
-    i2c_data_128byte.insert(0, int(cmd_id, 16))
-    # i2c_data_128byte.insert(0, int(slave_addr, 16))
+    # i2c_data_128byte.insert(0, int(byte3, 16))
+    # i2c_data_128byte.insert(0, int(byte2, 16))
+    # i2c_data_128byte.insert(0, int(byte1, 16))
+    # i2c_data_128byte.insert(0, int(cmd_id, 16))
 
     print(i2c_data_128byte)
     checksum = calcluate_checksum(i2c_data_128byte)

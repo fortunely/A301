@@ -1,6 +1,25 @@
 # -*- coding: utf-8 -*-
 import sys
 
+IP_280_50ms = "280"
+IP_380_500ms = "380"
+
+log_file_path1 = "G:\\willing\\A301\\测试文档\\漠河 远近光的CAN报文丢帧\\20191214170000_20191214180000.asc" # 远近光灯报文丢失
+log_file_path2 = "G:\\willing\A301\测试文档\\漠河 黑屏\\20191216093000_20191216100000\\20191216093000_20191216100000.asc" # 黑屏
+log_file_path3 = "F:\\工作\\A301\\测试文档\\漠河 远近光灯丢失\\20191214170000_20191214180000.asc"  # 远近光灯报文丢失
+log_file_path4 = "F:\\工作\A301\\测试文档\\漠河 黑屏\\20191216093000_20191216100000.asc"  # 黑屏
+
+
+log_file_path5 = "F:\\工作\\A301\\测试文档\\漠河 远近光灯丢失\\荣乐提供\\Bus Traffic 12-20-2019 3-56-28 pm.asc"
+log_file_path6 = "F:\\工作\\SVN\Department\\RD\\Project\\A301_IP\\03_测试\\PP4\\漠河黑屏\\拔掉仪表\\Bus Traffic201912202015 12-20-2019 8-15-49 pm.asc"
+log_file_path7 = "F:\\工作\\SVN\Department\\RD\\Project\\A301_IP\\03_测试\\PP4\\漠河黑屏\\正常到出现灭灯录的\\Bus Traffic201912201514 12-20-2019 5-14-37 pm.asc"
+log_file_path = log_file_path7
+
+
+filter_canid =  str(IP_280_50ms)
+filter_time = 0.01 # unit: s
+print("filter_canid = %s"%filter_canid)
+
 
 class CanFrameInfo:
     def __init__(self):
@@ -35,9 +54,9 @@ class CanFrameInfo:
 
 
 def can_data_parse_beam(can_frame_list):
-    # file = open("G:\\willing\\A301\\测试文档\\漠河 远近光的CAN报文丢帧\\20191214170000_20191214180000.asc") # 远近光灯报文丢失
-    file = open("G:\\willing\A301\测试文档\\漠河 黑屏\\20191216093000_20191216100000\\20191216093000_20191216100000.asc") # 黑屏
-    filter_string = " 380 "
+    file = open(log_file_path)
+
+    filter_string = " " + filter_canid + " "
 
     old_receive_time = 0
 
@@ -52,10 +71,11 @@ def can_data_parse_beam(can_frame_list):
             # print(line_str)
             can_frame = CanFrameInfo()
 
-            line_list = line_str.split(" ")
+            line_list = line_str.split(" ") # split one line string by space character (" ")
             # print(line_list)
             # print("length of line text: %d"%len(line_list))
 
+            #parase every filed of a line string, dont change the sequence of the fileds
             split_str_id = 0
             # received time
             while not line_list[split_str_id]:
@@ -124,7 +144,12 @@ def can_data_parse_beam(can_frame_list):
 
 def can_data_filter_duration(list, duration_min):
     print("can_data_filter_duration begin...")
-    print("can id = %x"%can_frame_list[0].can_id)
+
+    if not list:
+        print("list is null")
+        return
+
+    print("can id = %x"%list[0].can_id)
     i = 0
     while i < len(list):
         data = list[i]
@@ -140,4 +165,4 @@ def can_data_filter_duration(list, duration_min):
 
 can_frame_list = []
 can_data_parse_beam(can_frame_list)
-can_data_filter_duration(can_frame_list, 0.01)
+can_data_filter_duration(can_frame_list, filter_time)
