@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce9794a1-1b81-4839-a195-6f1e1a0ae132" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tp/i2c_log_checksum.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/A301.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/A301.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/A301_BeamAnalyse.py" beforeDir="false" afterPath="$PROJECT_DIR$/A301_BeamAnalyse.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/A301_TP_checksum.py" beforeDir="false" afterPath="$PROJECT_DIR$/A301_TP_checksum.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,19 +17,6 @@
         <option value="Python Script" />
       </list>
     </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>280</find>
-      <find>380</find>
-      <find>280</find>
-      <find>280</find>
-      <find>307</find>
-      <find>307</find>
-      <find>380</find>
-      <find>380</find>
-      <find>280</find>
-    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -129,8 +111,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.A301_BeamAnalyse" />
-        <item itemvalue="Python.A301_TP_checksum" />
         <item itemvalue="Python.test" />
+        <item itemvalue="Python.A301_TP_checksum" />
       </list>
     </recent_temporary>
   </component>

@@ -4,27 +4,22 @@ import sys
 IP_280_50ms = "280"
 IP_380_500ms = "380"
 
-log_file_path1 = "G:\\willing\\A301\\测试文档\\漠河 远近光的CAN报文丢帧\\20191214170000_20191214180000.asc" # 远近光灯报文丢失
-log_file_path2 = "G:\\willing\A301\测试文档\\漠河 黑屏\\20191216093000_20191216100000\\20191216093000_20191216100000.asc" # 黑屏
-log_file_path3 = "F:\\工作\\A301\\测试文档\\漠河 远近光灯丢失\\20191214170000_20191214180000.asc"  # 远近光灯报文丢失
-log_file_path4 = "F:\\工作\A301\\测试文档\\漠河 黑屏\\20191216093000_20191216100000.asc"  # 黑屏
+log_file_path_list = [
+    r"F:\工作\A301\测试文档\漠河\远近光灯丢失\远近光突然熄灭_20191221\20191220165000_20191220172000.asc" #远近光突然熄灭_20191221
+]
 
-
-log_file_path5 = "F:\\工作\\A301\\测试文档\\漠河 远近光灯丢失\\荣乐提供\\Bus Traffic 12-20-2019 3-56-28 pm.asc"
-log_file_path6 = "F:\\工作\\SVN\Department\\RD\\Project\\A301_IP\\03_测试\\PP4\\漠河黑屏\\拔掉仪表\\Bus Traffic201912202015 12-20-2019 8-15-49 pm.asc"
-log_file_path7 = "F:\\工作\\SVN\Department\\RD\\Project\\A301_IP\\03_测试\\PP4\\漠河黑屏\\正常到出现灭灯录的\\Bus Traffic201912201514 12-20-2019 5-14-37 pm.asc"
-log_file_path = log_file_path7
+log_file_path = log_file_path_list[0]
 
 
 filter_canid =  str(IP_280_50ms)
-filter_time = 0.01 # unit: s
+filter_time = 0.06 # unit: s
 print("filter_canid = %s"%filter_canid)
 
 
 class CanFrameInfo:
     def __init__(self):
-        self.recevie_time = 0
-        self.duration = self.recevie_time
+        self.recevie_time = 0 # unit: s
+        self.duration = self.recevie_time  # unit: s
         self.can_id = 0
         self.can_length = 0
         self.can_data = []
@@ -53,8 +48,25 @@ class CanFrameInfo:
             print("duration: %fS" % self.duration, end=", ")
 
 
+def convert_filepath_style_from_win_to_python(filepath):
+    s1 = "\\" # \
+    s2 = "\\\\" # \\
+    if s1 in filepath:
+        filepath.replace(s1, s2)
+        return filepath
+    else:
+        print("%s is not a valid file path"%filepath)
+
+        return ""
+
+
 def can_data_parse_beam(can_frame_list):
-    file = open(log_file_path)
+    filepath = convert_filepath_style_from_win_to_python(log_file_path)
+    if filepath == "":
+        return
+
+    print("Now parsing file %s ..."%filepath)
+    file = open(filepath)
 
     filter_string = " " + filter_canid + " "
 
@@ -128,7 +140,7 @@ def can_data_parse_beam(can_frame_list):
                 split_str_id += 1
 
             # line number
-            can_frame.line_number = i
+            can_frame.line_number = i + 1
 
             can_frame_list.append(can_frame)
             # can_frame.show()
@@ -149,16 +161,31 @@ def can_data_filter_duration(list, duration_min):
         print("list is null")
         return
 
-    print("can id = %x"%list[0].can_id)
+    f = open("out.txt", "w") # open file for writing
+    if not f:
+        print("fail to open output file")
+        return
+
+    # print("can id = %x"%list[0].can_id)
+
+    f.write("can id = %x \n"%list[0].can_id)
+    f.write("Can frame list of duration >= %.2f ms:\n"%(duration_min * 1000))
     i = 0
     while i < len(list):
         data = list[i]
         if data.duration >= duration_min:
-            print("line number = %d"%data.line_number, end=", ")
-            print("index = %d" % i, end=", ")
-            print("duration = %f"%(data.duration * 1000),"ms")
+            f.write("line number = %d  "%data.line_number)
+            f.write("index = %d  " % i)
+            f.write("duration = %.2f ms"%(data.duration * 1000))
+            f.write("\n")
+
+            # print("line number = %d"%data.line_number, end=", ")
+            # print("index = %d" % i, end=", ")
+            # print("duration = %fms"%(data.duration * 1000))
 
         i += 1
+
+    f.close()
 
     print("can_data_filter_duration end.")
 
@@ -166,3 +193,4 @@ def can_data_filter_duration(list, duration_min):
 can_frame_list = []
 can_data_parse_beam(can_frame_list)
 can_data_filter_duration(can_frame_list, filter_time)
+print("length of can_frame_list = %d"%len(can_frame_list))
