@@ -44,7 +44,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.A301_BeamAnalyse">
+  <component name="RunManager" selected="Python.test">
     <configuration name="A301_BeamAnalyse" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="A301" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -110,8 +110,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.A301_BeamAnalyse" />
         <item itemvalue="Python.test" />
+        <item itemvalue="Python.A301_BeamAnalyse" />
         <item itemvalue="Python.A301_TP_checksum" />
       </list>
     </recent_temporary>

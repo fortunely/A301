@@ -1,18 +1,30 @@
 # -*- coding: utf-8 -*-
 import sys
+import os.path
+from pathlib import Path
 
 IP_280_50ms = "280"
 IP_380_500ms = "380"
 
 log_file_path_list = [
-    r"F:\工作\A301\测试文档\漠河\远近光灯丢失\远近光突然熄灭_20191221\20191220165000_20191220172000.asc" #远近光突然熄灭_20191221
+    # 长安提供
+    r"F:\工作\A301\测试文档\漠河\远近光灯丢失\远近光突然熄灭_20191221\20191220165000_20191220172000.asc", #远近光突然熄灭_20191221
+    r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\20191217\黑屏\20191216093000_20191216100000.asc",
+    r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\20191220\远近光灯突然熄灭\20191220165000_20191220172000.asc",
+
+    #荣乐提供
+    r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\20191220\正常行驶\Bus Traffic201912201500 12-20-2019 4-59-56 pm.asc",
+    r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\20191220\正常到出现灭灯\Bus Traffic201912201514 12-20-2019 5-14-37 pm.asc",
+    r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\20191221\行驶正常\Bus Traffic201912211656 12-21-2019 4-56-12 pm.asc",
+    r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\20191221\静态近光熄灭\Bus Traffic201912211916 12-21-2019 7-16-38 pm.asc",
+    r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\20191221\静态正常\Bus Traffic201912211547 12-21-2019 3-47-58 pm.asc"
 ]
 
-log_file_path = log_file_path_list[0]
+log_file_path = log_file_path_list[2]
 
 
 filter_canid =  str(IP_280_50ms)
-filter_time = 0.06 # unit: s
+filter_time = 10#0.06 # unit: s
 print("filter_canid = %s"%filter_canid)
 
 
@@ -48,9 +60,17 @@ class CanFrameInfo:
             print("duration: %fS" % self.duration, end=", ")
 
 
+def get_file_type(filepath):
+    os.path.splitext(filepath)[0]
+
 def convert_filepath_style_from_win_to_python(filepath):
+    if not filepath.endswith(".asc"):
+        print("%s is not a valid asc file."%filepath)
+        return ""
+
     s1 = "\\" # \
     s2 = "\\\\" # \\
+
     if s1 in filepath:
         filepath.replace(s1, s2)
         return filepath
