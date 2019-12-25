@@ -4,6 +4,7 @@
     <list default="true" id="ce9794a1-1b81-4839-a195-6f1e1a0ae132" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/A301_BeamAnalyse.py" beforeDir="false" afterPath="$PROJECT_DIR$/A301_BeamAnalyse.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -44,7 +45,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.test">
+  <component name="RunManager" selected="Python.A301_BeamAnalyse">
     <configuration name="A301_BeamAnalyse" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="A301" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -110,8 +111,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.test" />
         <item itemvalue="Python.A301_BeamAnalyse" />
+        <item itemvalue="Python.test" />
         <item itemvalue="Python.A301_TP_checksum" />
       </list>
     </recent_temporary>

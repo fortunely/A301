@@ -21,3 +21,5 @@ file = os.listdir(r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\�
 print(file)
 print("file name : ", os.path.splitext(file)[0])
 print("file name : ", os.path.splitext(file)[1])
+
+dict =

@@ -3,29 +3,51 @@ import sys
 import os.path
 from pathlib import Path
 
+log_file_path_dict = {
+    # 长安提供
+    "CA_1":r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\20191217\黑屏\20191216093000_20191216100000.asc",
+    "CA_2":r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\20191220\远近光灯突然熄灭\20191220165000_20191220172000.asc",  #远近光突然熄灭_20191221
+
+    # 荣乐提供
+    "RL_1":r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\20191220\正常行驶\Bus Traffic201912201500 12-20-2019 4-59-56 pm.asc",
+    "RL_2":r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\20191220\正常到出现灭灯\Bus Traffic201912201514 12-20-2019 5-14-37 pm.asc",
+    "RL_3":r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\20191221\行驶正常\Bus Traffic201912211656 12-21-2019 4-56-12 pm.asc",
+    "RL_4":r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\20191221\静态近光熄灭\Bus Traffic201912211916 12-21-2019 7-16-38 pm.asc",
+    "RL_5":r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\20191221\静态正常\Bus Traffic201912211547 12-21-2019 3-47-58 pm.asc",
+    
+    "RL_6":r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\20191225\近光灯熄灭\Bus Traffic 12-25-2019 15-20-09 pm.asc",
+    "RL_7":r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\20191225\静态正常\Bus Traffic 12-25-2019 13-29-41 pm.asc",
+
+    # 低温箱
+    "DG_1":r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\东莞低温试验\20191223\20191223.txt",
+    
+    # 常温实验台架
+    "HZ_1":r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\常温试验台架\20191225\Frame 1(0-9999).asc",
+    "HZ_2":r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\常温试验台架\20191225\Frame 2(0-9999).asc",
+    "HZ_3":r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\常温试验台架\20191225\frame_all.asc",
+}
+
+log_file_path = log_file_path_dict["RL_7"]
+
 IP_280_50ms = "280"
 IP_380_500ms = "380"
 
-log_file_path_list = [
-    # 长安提供
-    r"F:\工作\A301\测试文档\漠河\远近光灯丢失\远近光突然熄灭_20191221\20191220165000_20191220172000.asc", #远近光突然熄灭_20191221
-    r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\20191217\黑屏\20191216093000_20191216100000.asc",
-    r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\20191220\远近光灯突然熄灭\20191220165000_20191220172000.asc",
-
-    #荣乐提供
-    r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\20191220\正常行驶\Bus Traffic201912201500 12-20-2019 4-59-56 pm.asc",
-    r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\20191220\正常到出现灭灯\Bus Traffic201912201514 12-20-2019 5-14-37 pm.asc",
-    r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\20191221\行驶正常\Bus Traffic201912211656 12-21-2019 4-56-12 pm.asc",
-    r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\20191221\静态近光熄灭\Bus Traffic201912211916 12-21-2019 7-16-38 pm.asc",
-    r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\20191221\静态正常\Bus Traffic201912211547 12-21-2019 3-47-58 pm.asc"
-]
-
-log_file_path = log_file_path_list[2]
-
+id_dict = {
+IP_280_50ms: 0.06,
+IP_380_500ms: 0.6,
+}
 
 filter_canid =  str(IP_280_50ms)
-filter_time = 10#0.06 # unit: s
+filter_time = id_dict[filter_canid] # 0.06#0.06 # unit: s
 print("filter_canid = %s"%filter_canid)
+
+output_file_name = ""
+if filter_canid == IP_280_50ms:
+    output_file_name = "out_280.txt"
+elif filter_canid == IP_380_500ms:
+    output_file_name = "out_380.txt"
+else:
+    output_file_name = "out.txt"
 
 
 class CanFrameInfo:
@@ -76,7 +98,6 @@ def convert_filepath_style_from_win_to_python(filepath):
         return filepath
     else:
         print("%s is not a valid file path"%filepath)
-
         return ""
 
 
@@ -181,7 +202,11 @@ def can_data_filter_duration(list, duration_min):
         print("list is null")
         return
 
-    f = open("out.txt", "w") # open file for writing
+    if not output_file_name:
+        print("output files name cant be null")
+        return
+
+    f = open(output_file_name, "w") # open file for writing
     if not f:
         print("fail to open output file")
         return
