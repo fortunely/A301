@@ -17,9 +17,7 @@ def convert_filepath_style_from_win_to_python(filepath):
 convert_filepath_style_from_win_to_python(log_file_path)
 
 
-file = os.listdir(r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\20191217\黑屏\20191216093000_20191216100000.asc")
+file = r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\20191217\黑屏\20191216093000_20191216100000.asc" #os.listdir(r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\20191217\黑屏\20191216093000_20191216100000.asc")
 print(file)
 print("file name : ", os.path.splitext(file)[0])
 print("file name : ", os.path.splitext(file)[1])
-
-dict =

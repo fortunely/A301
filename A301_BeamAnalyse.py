@@ -27,17 +27,21 @@ log_file_path_dict = {
     "HZ_3":r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\常温试验台架\20191225\frame_all.asc",
 }
 
-log_file_path = log_file_path_dict["RL_7"]
+log_file_path = log_file_path_dict["RL_4"]
 
 IP_280_50ms = "280"
 IP_380_500ms = "380"
+EPB_26B_20ms = "26B"
+SRS_50_500ms = "50"
 
 id_dict = {
 IP_280_50ms: 0.06,
-IP_380_500ms: 0.6,
+IP_380_500ms: 0.45, #0.6,
+EPB_26B_20ms: 0.025, #filter time =30ms
+SRS_50_500ms: 0.01, #filter time =50ms
 }
 
-filter_canid =  str(IP_280_50ms)
+filter_canid =  str(SRS_50_500ms)
 filter_time = id_dict[filter_canid] # 0.06#0.06 # unit: s
 print("filter_canid = %s"%filter_canid)
 
@@ -109,7 +113,7 @@ def can_data_parse_beam(can_frame_list):
     print("Now parsing file %s ..."%filepath)
     file = open(filepath)
 
-    filter_string = " " + filter_canid + " "
+    filter_string = " " + filter_canid + "  "
 
     old_receive_time = 0
 
