@@ -18,6 +18,20 @@ log_file_path_dict = {
     "RL_6":r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\20191225\近光灯熄灭\Bus Traffic 12-25-2019 15-20-09 pm.asc",
     "RL_7":r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\20191225\静态正常\Bus Traffic 12-25-2019 13-29-41 pm.asc",
 
+    # 杭州replay - 删除280 380
+    "HZ_RE_1": r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\20191221\行驶正常\Bus Traffic201912211630 12-21-2019 4-30-52 pm(filtered) CANoe 记录280、380报文.asc",
+    "HZ_RE_2": r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\20191221\行驶正常\Bus Traffic201912211656 12-21-2019 4-56-12 pm(filtered) CANoe 记录280、380报文.asc",
+    "HZ_RE_3": r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\20191221\静态近光熄灭\Bus Traffic201912211916 12-21-2019 7-16-38 pm(filtered) CANoe 记录280、380.asc",
+    "HZ_RE_4": r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\20191221\静态正常\Bus Traffic201912211547 12-21-2019 3-47-58 pm(filtered) CANoe 记录280、380报文.asc",
+    "HZ_RE_5": r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\20191221\静态近光熄灭\Bus Traffic201912211916 12-21-2019 7-16-38 pm(filtered)CANoe 记录280、380 -1.asc",
+
+    # 692
+    "RL_8": r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\20191226\692\off界面开启远近光灯\Bus Traffic 12-26-2019 15-45-41 pm.asc",
+    "RL_9": r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\20191226\692\近光熄灭\Bus Traffic 12-26-2019 14-17-21 pm.asc",
+    "RL_10": r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\20191226\692\正常静态\Bus Traffic 12-26-2019 15-09-46 pm.asc",
+    "RL_11": r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\20191226\692\正常静态，不过15点08下了on电，接着又上on电\Bus Traffic 12-26-2019 14-31-58 pm.asc",
+
+    
     # 低温箱
     "DG_1":r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\东莞低温试验\20191223\20191223.txt",
     
@@ -25,9 +39,14 @@ log_file_path_dict = {
     "HZ_1":r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\常温试验台架\20191225\Frame 1(0-9999).asc",
     "HZ_2":r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\常温试验台架\20191225\Frame 2(0-9999).asc",
     "HZ_3":r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\常温试验台架\20191225\frame_all.asc",
+    "HZ_4":r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\杭州常温试验\20191226\试验报文记录.asc",
+
+    # 杭州实车
+    "HZ_V_1": r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\杭州常温试验\2019.12.27 实车报文\整车报文 2019.12.27.asc",
+
 }
 
-log_file_path = log_file_path_dict["RL_4"]
+log_file_path = log_file_path_dict["HZ_V_1"]
 
 IP_280_50ms = "280"
 IP_380_500ms = "380"
@@ -35,13 +54,13 @@ EPB_26B_20ms = "26B"
 SRS_50_500ms = "50"
 
 id_dict = {
-IP_280_50ms: 0.06,
-IP_380_500ms: 0.45, #0.6,
+IP_280_50ms: 0.06, #, 0.0001
+IP_380_500ms: 0.6, #0.6,
 EPB_26B_20ms: 0.025, #filter time =30ms
 SRS_50_500ms: 0.01, #filter time =50ms
 }
 
-filter_canid =  str(SRS_50_500ms)
+filter_canid =  str(IP_380_500ms)
 filter_time = id_dict[filter_canid] # 0.06#0.06 # unit: s
 print("filter_canid = %s"%filter_canid)
 
