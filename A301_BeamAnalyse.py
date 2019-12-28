@@ -18,6 +18,10 @@ log_file_path_dict = {
     "RL_6":r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\20191225\近光灯熄灭\Bus Traffic 12-25-2019 15-20-09 pm.asc",
     "RL_7":r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\20191225\静态正常\Bus Traffic 12-25-2019 13-29-41 pm.asc",
 
+    # 荣乐提供 漠河 升级V0.24_DEBUG后
+    "RL_Debug_1": r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\20191228\升级后\Bus Traffic 12-28-2019 6-54-42 pm.asc",
+    "RL_Debug_2": r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\20191228\升级后\Bus Traffic 12-28-2019 7-00-48 pm.asc",
+
     # 杭州replay - 删除280 380
     "HZ_RE_1": r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\20191221\行驶正常\Bus Traffic201912211630 12-21-2019 4-30-52 pm(filtered) CANoe 记录280、380报文.asc",
     "HZ_RE_2": r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\20191221\行驶正常\Bus Traffic201912211656 12-21-2019 4-56-12 pm(filtered) CANoe 记录280、380报文.asc",
@@ -46,21 +50,23 @@ log_file_path_dict = {
 
 }
 
-log_file_path = log_file_path_dict["HZ_V_1"]
+log_file_path = log_file_path_dict["RL_Debug_2"]
 
 IP_280_50ms = "280"
 IP_380_500ms = "380"
+IP_611_50ms = "611"
 EPB_26B_20ms = "26B"
 SRS_50_500ms = "50"
 
 id_dict = {
 IP_280_50ms: 0.06, #, 0.0001
 IP_380_500ms: 0.6, #0.6,
+IP_611_50ms: 0.06,
 EPB_26B_20ms: 0.025, #filter time =30ms
 SRS_50_500ms: 0.01, #filter time =50ms
 }
 
-filter_canid =  str(IP_380_500ms)
+filter_canid =  str(IP_611_50ms)
 filter_time = id_dict[filter_canid] # 0.06#0.06 # unit: s
 print("filter_canid = %s"%filter_canid)
 
