@@ -23,7 +23,7 @@ log_file_path_dict = {
     "RL_6":r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\20191225\近光灯熄灭\Bus Traffic 12-25-2019 15-20-09 pm.asc",
     "RL_7":r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\20191225\静态正常\Bus Traffic 12-25-2019 13-29-41 pm.asc",
 
-    # 荣乐提供 漠河 升级V0.24_DEBUG后
+    # Rongle提供 漠河 升级V0.24_DEBUG后
     "RL_Debug_1": r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\20191228\升级后\Bus Traffic 12-28-2019 6-54-42 pm.asc",
     "RL_Debug_2": r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\20191228\升级后\Bus Traffic 12-28-2019 7-00-48 pm.asc",
 
@@ -42,14 +42,14 @@ log_file_path_dict = {
     "RL_11": r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\20191226\692\正常静态，不过15点08下了on电，接着又上on电\Bus Traffic 12-26-2019 14-31-58 pm.asc",
 
     # 低温箱
-    "DG_1":r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\东莞低温试验\20191223\20191223.txt",
+    "DG_1": r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\东莞低温试验\20191223\20191223.txt",
     
     # 常温实验台架
-    "HZ_1":r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\常温试验台架\20191225\Frame 1(0-9999).asc",
-    "HZ_2":r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\常温试验台架\20191225\Frame 2(0-9999).asc",
-    "HZ_3":r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\常温试验台架\20191225\frame_all.asc",
-    "HZ_4":r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\杭州常温试验\20191226\试验报文记录.asc",
-    "HZ_5":r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\杭州常温试验\20191231\V0.26_测报文丢失.asc",
+    "HZ_1": r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\常温试验台架\20191225\Frame 1(0-9999).asc",
+    "HZ_2": r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\常温试验台架\20191225\Frame 2(0-9999).asc",
+    "HZ_3": r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\常温试验台架\20191225\frame_all.asc",
+    "HZ_4": r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\杭州常温试验\20191226\试验报文记录.asc",
+    "HZ_5": r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\杭州常温试验\20191231\V0.26_测报文丢失.asc",
 
     # 杭州实车
     "HZ_V_1": r"F:\工作\SVN\Department\RD\Project\A301_IP\03_测试\PP4\漠河\杭州常温试验\2019.12.27 实车报文\整车报文 2019.12.27.asc",
